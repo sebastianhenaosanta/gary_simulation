@@ -1,0 +1,6 @@
+src:
+  - gary_simulation
+
+ros_pkgs:
+  - gary_sim_bringup
+
