@@ -1,6 +1,8 @@
+display: True
 src:
   - gary_simulation
 
 ros_pkgs:
   - gary_sim_bringup
+  - gary_robot_description
 
