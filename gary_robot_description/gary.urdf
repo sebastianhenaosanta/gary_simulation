@@ -4,16 +4,87 @@
     <color rgba="0 0.5 0 1"/>
   </material>
   <material name="blue">
-    <color rgba="0 0 0.5 1"/>
+    <color rgba="0 0 1.0 1"/>
   </material>
 
   <link name="base_link">
     <visual>
       <geometry>
-        <box size="0.395 0.380 0.2"/>
+        <box size="0.4 0.4 0.2"/>
       </geometry>
       <origin xyz="0 0 0.1" rpy="0 0 0"/>
       <material name="blue" />
     </visual>
   </link>
+
+
+  <link name="right_front_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.11" length="0.058"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="green" />
+    </visual>
+  </link>
+
+  <link name="right_rear_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.11" length="0.058"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="green" />
+    </visual>
+  </link>
+
+
+  <link name="left_front_wheel">
+    <visual>
+      <geometry>
+         <cylinder radius="0.11" length="0.058"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="green" />
+    </visual>
+  </link>
+
+
+  <link name="left_rear_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.11" length="0.058"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="green" />
+    </visual>
+  </link>
+
+  <!--  joints-->
+
+  <joint name="base_rf_wheel_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="right_front_wheel" />
+    <origin xyz="0.15 -0.229 0.055" rpy="1.5708 0.0 0.0" />
+  </joint>
+
+  <joint name="base_rr_wheel_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="right_rear_wheel" />
+    <origin xyz="-0.15 -0.229 0.055" rpy="1.5708 0.0 0.0" />
+  </joint>
+
+  <joint name="base_lf_wheel_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="left_front_wheel" />
+    <origin xyz="0.15 0.229 0.055" rpy="1.5708 0.0 0.0" />
+  </joint>
+
+  <joint name="base_lr_wheel_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="left_rear_wheel" />
+    <origin xyz="-0.15 0.229 0.055" rpy="1.5708 0.0 0.0" />
+  </joint>
+
+
 </robot>
