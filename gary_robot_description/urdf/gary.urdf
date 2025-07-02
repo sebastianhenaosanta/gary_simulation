@@ -6,6 +6,12 @@
   <material name="blue">
     <color rgba="0 0 1.0 1"/>
   </material>
+  <material name="red">
+    <color rgba="1.0 0 0 1"/>
+  </material>
+
+<!--  links-->
+  <link name="base_footprint" />
 
   <link name="base_link">
     <visual>
@@ -17,13 +23,12 @@
     </visual>
   </link>
 
-
   <link name="right_front_wheel">
     <visual>
       <geometry>
         <cylinder radius="0.11" length="0.058"/>
       </geometry>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="1.57 0 0"/>
       <material name="green" />
     </visual>
   </link>
@@ -33,7 +38,7 @@
       <geometry>
         <cylinder radius="0.11" length="0.058"/>
       </geometry>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="1.57 0 0"/>
       <material name="green" />
     </visual>
   </link>
@@ -44,7 +49,7 @@
       <geometry>
          <cylinder radius="0.11" length="0.058"/>
       </geometry>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="1.57 0 0"/>
       <material name="green" />
     </visual>
   </link>
@@ -55,36 +60,45 @@
       <geometry>
         <cylinder radius="0.11" length="0.058"/>
       </geometry>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="1.57 0 0"/>
       <material name="green" />
     </visual>
   </link>
 
   <!--  joints-->
 
-  <joint name="base_rf_wheel_joint" type="fixed">
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint" />
+    <child link="base_link" />
+    <origin xyz="0 0 0.055" rpy="0 0 0" />
+  </joint>
+
+  <joint name="base_rf_wheel_joint" type="continuous">
     <parent link="base_link" />
     <child link="right_front_wheel" />
-    <origin xyz="0.15 -0.229 0.055" rpy="1.5708 0.0 0.0" />
+    <origin xyz="0.15 -0.229 0.055" rpy="0.0 0.0 0.0" />
+    <axis xyz="0 1 0"/>
   </joint>
 
-  <joint name="base_rr_wheel_joint" type="fixed">
+  <joint name="base_rr_wheel_joint" type="continuous">
     <parent link="base_link" />
     <child link="right_rear_wheel" />
-    <origin xyz="-0.15 -0.229 0.055" rpy="1.5708 0.0 0.0" />
+    <origin xyz="-0.15 -0.229 0.055" rpy="0.0 0.0 0.0" />
+    <axis xyz="0 1 0"/>
   </joint>
 
-  <joint name="base_lf_wheel_joint" type="fixed">
+  <joint name="base_lf_wheel_joint" type="continuous">
     <parent link="base_link" />
     <child link="left_front_wheel" />
-    <origin xyz="0.15 0.229 0.055" rpy="1.5708 0.0 0.0" />
+    <origin xyz="0.15 0.229 0.055" rpy="0.0 0.0 0.0" />
+    <axis xyz="0 1 0"/>
   </joint>
 
-  <joint name="base_lr_wheel_joint" type="fixed">
+  <joint name="base_lr_wheel_joint" type="continuous">
     <parent link="base_link" />
     <child link="left_rear_wheel" />
-    <origin xyz="-0.15 0.229 0.055" rpy="1.5708 0.0 0.0" />
+    <origin xyz="-0.15 0.229 0.055" rpy="0.0 0.0 0.0" />
+    <axis xyz="0 1 0"/>
   </joint>
-
 
 </robot>
