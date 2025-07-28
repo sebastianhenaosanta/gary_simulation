@@ -7,6 +7,13 @@
   <xacro:property name="wheel_radius" value="0.11" />
   <xacro:property name="wheel_length" value="0.058" />
 
+
+  <xacro:macro name="example_macro" params="a b c">
+    <link name="dummy_link">
+      
+    </link>
+  </xacro:macro>
+
   <material name="green">
     <color rgba="0 0.5 0 1"/>
   </material>
@@ -30,48 +37,25 @@
     </visual>
   </link>
 
-  <link name="right_front_wheel">
-    <visual>
-      <geometry>
-        <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
-      </geometry>
-      <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
-      <material name="green" />
-    </visual>
-  </link>
 
-  <link name="right_rear_wheel">
-    <visual>
-      <geometry>
-        <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
-      </geometry>
-      <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
-      <material name="green" />
-    </visual>
-  </link>
+  <xacro:macro name="wheel_link" params="prefix">
+    <link name="${prefix}_wheel_link">
+      <visual>
+        <geometry>
+          <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
+        </geometry>
+        <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+        <material name="green" />
+      </visual>
+    </link>
+  </xacro:macro>
+
+  <xacro:wheel_link prefix="right_front" />
+  <xacro:wheel_link prefix="left_front" />
+  <xacro:wheel_link prefix="right_rear" />
+  <xacro:wheel_link prefix="left_rear" />
 
 
-  <link name="left_front_wheel">
-    <visual>
-      <geometry>
-        <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
-      </geometry>
-      <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
-      <material name="green" />
-    </visual>
-  </link>
-
-  <link name="left_rear_wheel">
-    <visual>
-      <geometry>
-        <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
-      </geometry>
-      <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
-      <material name="green" />
-    </visual>
-  </link>
-
-  <!--  joints-->
   <joint name="base_joint" type="fixed">
     <parent link="base_footprint" />
     <child link="base_link" />
@@ -80,28 +64,28 @@
 
   <joint name="base_rf_wheel_joint" type="continuous">
     <parent link="base_link" />
-    <child link="right_front_wheel" />
+    <child link="right_front_wheel_link" />
     <origin xyz="0.15 ${-1*(base_width + wheel_length)/2} ${base_heigh/4}" rpy="0.0 0.0 0.0" />
     <axis xyz="0 1 0"/>
   </joint>
 
   <joint name="base_rr_wheel_joint" type="continuous">
     <parent link="base_link" />
-    <child link="right_rear_wheel" />
+    <child link="right_rear_wheel_link" />
     <origin xyz="-0.15 ${-1*(base_width + wheel_length)/2} ${base_heigh/4}" rpy="0.0 0.0 0.0" />
     <axis xyz="0 1 0"/>
   </joint>
-dd
+
   <joint name="base_lf_wheel_joint" type="continuous">
     <parent link="base_link" />
-    <child link="left_front_wheel" />
+    <child link="left_front_wheel_link" />
     <origin xyz="0.15 ${(base_width + wheel_length)/2} ${base_heigh/4}" rpy="0.0 0.0 0.0" />
     <axis xyz="0 1 0"/>
   </joint>
 
   <joint name="base_lr_wheel_joint" type="continuous">
     <parent link="base_link" />
-    <child link="left_rear_wheel" />
+    <child link="left_rear_wheel_link" />
     <origin xyz="-0.15 ${(base_width+wheel_length)/2} ${base_heigh/4}" rpy="0.0 0.0 0.0" />
     <axis xyz="0 1 0"/>
   </joint>
