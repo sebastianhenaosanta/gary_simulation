@@ -35,7 +35,17 @@
   <xacro:wheel_link prefix="right_front" />
   <xacro:wheel_link prefix="left_front" />
   <xacro:wheel_link prefix="right_rear" />
-  <xacro:wheel_link prefix="left_rear" />
+  <!-- <xacro:wheel_link prefix="left_rear" /> -->
+  
+  <link name="left_rear_wheel_link">
+      <visual>
+      <geometry>
+          <mesh filename="package://gary_robot_description/meshes/left_tire.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+      <material name="green" />
+      </visual>
+  </link>
 
   <joint name="base_joint" type="fixed">
     <parent link="base_footprint" />
