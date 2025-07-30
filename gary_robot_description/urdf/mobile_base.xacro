@@ -84,6 +84,5 @@
     <origin xyz="${-base_length/3} ${(base_width+wheel_length)/2} ${base_heigh/4}" rpy="0.0 0.0 0.0" />
     <axis xyz="0 1 0"/>
   </joint>
-
-
+  
 </robot>
