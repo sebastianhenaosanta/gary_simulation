@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <gazebo>
+    <plugin  filename="gz-sim-diff-drive-system"  name="gz::sim::systems::DiffDrive">
+        <num_wheel_pairs>2</num_wheel_pairs>
+        <right_joint>base_rf_wheel_joint</right_joint>
+        <right_joint>base_rr_wheel_joint</right_joint>
+        <left_joint>base_lf_wheel_joint</left_joint>
+        <left_joint>base_lr_wheel_joint</left_joint>
+        <wheel_separation>0.458</wheel_separation>
+        <wheel_radius>0.11</wheel_radius>
+        <frame_id>odom</frame_id>
+        <child_frame_id>base_footprint</child_frame_id>
+    </plugin>
+  </gazebo>
+
+  <gazebo>
+    <plugin  filename="gz-sim-joint-state-publisher-system"  
+    name="gz::sim::systems::JointStatePublisher">
+    <joint_name>base_rf_wheel_joint</joint_name>
+    <joint_name>base_rr_wheel_joint</joint_name>
+    <joint_name>base_lf_wheel_joint</joint_name>
+    <joint_name>base_lr_wheel_joint</joint_name>
+    </plugin>
+  </gazebo>
+
+</robot>

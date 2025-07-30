@@ -70,7 +70,7 @@
     <origin xyz="${-base_length/3} ${-1*(base_width + wheel_length)/2} ${base_heigh/4}" rpy="0.0 0.0 0.0" />
     <axis xyz="0 1 0"/>
   </joint>
-
+ 
   <joint name="base_lf_wheel_joint" type="continuous">
     <parent link="base_link" />
     <child link="left_front_wheel_link" />
@@ -83,6 +83,6 @@
     <child link="left_rear_wheel_link" />
     <origin xyz="${-base_length/3} ${(base_width+wheel_length)/2} ${base_heigh/4}" rpy="0.0 0.0 0.0" />
     <axis xyz="0 1 0"/>
-  </joint>
-  
+  </joint> 
+
 </robot>

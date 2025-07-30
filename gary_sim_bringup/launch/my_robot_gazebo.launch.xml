@@ -3,7 +3,8 @@
          value="$(find-pkg-share gary_robot_description)/urdf/gary.urdf.xacro" />
     <let name="rviz_config_path"
          value="$(find-pkg-share gary_robot_description)/rviz/urdf_config.rviz" />
-
+    <let name="gzb_config_path" 
+         value="$(find-pkg-share gary_sim_bringup)/config/gazebo_bridge.yaml"/>
     <node pkg="robot_state_publisher" exec="robot_state_publisher">
         <param name="robot_description"
                value="$(command 'xacro $(var urdf_path)')" />
@@ -14,6 +15,10 @@
     </include>
 
     <node pkg="ros_gz_sim" exec="create" args="-topic robot_description" />
+
+    <node pkg="ros_gz_bridge" exec="parameter_bridge"> 
+        <param name="config_file" value="$(var gzb_config_path)" />
+    </node>
 
     <node pkg="rviz2" exec="rviz2" output="screen" 
           args="-d $(var rviz_config_path)" />
